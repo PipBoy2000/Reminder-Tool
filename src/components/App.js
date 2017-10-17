@@ -1,23 +1,28 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { addReminder, deleteReminder, clearReminders } from '../actions';
 import moment from 'moment';
 
-class App extends Component {
-  constructor(props) {
+var App = React.createClass({
+  /* constructor(props) {
     super(props);
     this.state = {
       text: ''
     }
-  }
+  } */
+  getInitialState() {
+    return {
+      text: ''
+    }
+  },
 
   addReminder() {
     this.props.addReminder(this.state.text, this.state.dueDate);
-  }
+  },
 
   deleteReminder(id) {
     this.props.deleteReminder(id);
-  }
+  },
 
   renderReminders() {
     const { reminders } = this.props;
@@ -45,7 +50,7 @@ class App extends Component {
         }
       </ul>
     )
-  }
+  },
 
   render() {
     return (
@@ -84,7 +89,8 @@ class App extends Component {
       </div>
     )
   }
-}
+})
+
 
 function mapStateToProps(state) {
   return {
